@@ -1,0 +1,1 @@
+export {default as RestaurantCoupon} from './RestaurantCoupon'
