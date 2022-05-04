@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react'
 import {
   SafeAreaView,
   ScrollView,
@@ -10,30 +10,27 @@ import {
   Dimensions,
   TouchableOpacity,
   FlatList,
-  Image
-} from 'react-native';
+  Image,
+} from 'react-native'
 
-import { useNavigation } from '@react-navigation/native';
-import { useRoute } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native'
+import {useRoute} from '@react-navigation/native'
 
-const {width, height} = Dimensions.get("window")
+const {width, height} = Dimensions.get('window')
 
 const SortKind = () => {
+  const navigation = useNavigation()
+  const route = useRoute()
 
-    const navigation = useNavigation();
-    const route = useRoute();
-
-    return(
-      <View style={styles.main}>
-          <Text>abc</Text>
-      </View>
-    )
-};
+  return (
+    <View style={styles.main}>
+      <Text>abc</Text>
+    </View>
+  )
+}
 
 const styles = StyleSheet.create({
-    main:{
-
-    }
-});
+  main: {},
+})
 
 export default SortKind

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react'
 import {
   SafeAreaView,
   ScrollView,
@@ -9,28 +9,24 @@ import {
   View,
   Dimensions,
   TouchableOpacity,
-  FlatList
-} from 'react-native';
+  FlatList,
+} from 'react-native'
 
+import {useNavigation, useRoute} from '@react-navigation/native'
 
-import { useNavigation, useRoute } from '@react-navigation/native';
-
-const {width, height} = Dimensions.get("window") 
+const {width, height} = Dimensions.get('window')
 
 const BannerItem = () => {
+  const navigation = useNavigation()
+  const route = useRoute()
 
-    const navigation = useNavigation();
-    const route = useRoute();
+  return (
+    <View>
+      <Text>aa{route.params.name}</Text>
+    </View>
+  )
+}
 
-    return(
-      <View>
-          <Text>aa{route.params.name}</Text>
-      </View>
-    )
-};
-
-const styles = StyleSheet.create({
-
-});
+const styles = StyleSheet.create({})
 
 export default BannerItem

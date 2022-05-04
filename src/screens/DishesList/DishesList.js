@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react'
 import {
   SafeAreaView,
   ScrollView,
@@ -9,35 +9,30 @@ import {
   View,
   Dimensions,
   TouchableOpacity,
-  FlatList
-} from 'react-native';
+  FlatList,
+} from 'react-native'
 
+import {useNavigation, useRoute} from '@react-navigation/native'
+import {Toolbar} from '../../components/Toolbar'
 
-import { useNavigation, useRoute } from '@react-navigation/native';
-import { Toolbar } from '../../components/Toolbar';
-
-
-const {width, height} = Dimensions.get("window") 
-
+const {width, height} = Dimensions.get('window')
 
 const DishesList = () => {
+  const navigation = useNavigation()
+  const route = useRoute()
 
-    const navigation = useNavigation();
-    const route = useRoute();
-
-
-    return(
-      <View style={styles.main}>
-          <Toolbar/>
-      </View>
-    )
-};
+  return (
+    <View style={styles.main}>
+      <Toolbar />
+    </View>
+  )
+}
 
 const styles = StyleSheet.create({
   main: {
-    backgroundColor: "white",
-    flex: 1
-  }
-});
+    backgroundColor: 'white',
+    flex: 1,
+  },
+})
 
 export default DishesList

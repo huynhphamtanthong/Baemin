@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react'
 import {
   SafeAreaView,
   ScrollView,
@@ -9,40 +9,38 @@ import {
   View,
   Dimensions,
   TouchableOpacity,
-  FlatList
-} from 'react-native';
+  FlatList,
+} from 'react-native'
 
+import {useNavigation, useRoute} from '@react-navigation/native'
+import {VoucherListItem} from '../Home/dataTest'
+import {Toolbar} from '../../components/Toolbar'
+import {OptionSort} from '../../components/OptionSort'
+import {RestaurantFlatlist} from '../../components/RestaurantFlatlist'
 
-import { useNavigation, useRoute } from '@react-navigation/native';
-import { VoucherListItem } from '../Home/dataTest';
-import { Toolbar } from '../../components/Toolbar';
-import { OptionSort } from '../../components/OptionSort';
-import { RestaurantFlatlist } from '../../components/RestaurantFlatlist';
-
-const {width, height} = Dimensions.get("window") 
+const {width, height} = Dimensions.get('window')
 
 const RestaurantList = () => {
+  const navigation = useNavigation()
+  const route = useRoute()
 
-    const navigation = useNavigation();
-    const route = useRoute();
-
-    return(
+  return (
     <View style={styles.main}>
-        <Toolbar/>
-        <OptionSort/>
-        <ScrollView>
-            <RestaurantFlatlist />
-        </ScrollView>
+      <Toolbar />
+      <OptionSort />
+      <ScrollView>
+        <RestaurantFlatlist />
+      </ScrollView>
     </View>
-    )
-};
+  )
+}
 
 const styles = StyleSheet.create({
-    main: {
-        flexDirection: 'column',
-        backgroundColor: 'white',
-        flex: 1
-    }
-});
+  main: {
+    flexDirection: 'column',
+    backgroundColor: 'white',
+    flex: 1,
+  },
+})
 
 export default RestaurantList

@@ -18,7 +18,7 @@ import LeftArrow from '../../assets/icons/arrow-left-svgrepo-com.svg'
 
 const {width, height} = Dimensions.get('window')
 
-const Toolbar = () => {
+const ToolbarSort = () => {
   const navigation = useNavigation()
   const route = useRoute()
 
@@ -34,7 +34,7 @@ const Toolbar = () => {
       >
         <LeftArrow width={30} height={30} style={styles.leftArrowStyle} />
       </TouchableOpacity>
-      <Text style={styles.titleTextStyle}>{route.params.shortDescription}</Text>
+      <Text style={styles.titleTextStyle}>{route.params.title}</Text>
       <LeftArrow
         width={30}
         height={30}
@@ -61,4 +61,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default Toolbar
+export default ToolbarSort
