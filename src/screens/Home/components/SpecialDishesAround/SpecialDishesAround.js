@@ -27,7 +27,7 @@ const SpecialDishesAround = ({listItem}) => {
   return (
     <View style={styles.main}>
       <Text style={styles.headerTextStyle}>{headerText}</Text>
-      <RestaurantFlatlist listItem={listItem} />
+      <RestaurantFlatlist sortOption={null} kindOption={null} />
     </View>
   )
 }

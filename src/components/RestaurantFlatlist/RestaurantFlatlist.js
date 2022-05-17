@@ -21,7 +21,7 @@ import TickIcon from '../../assets/icons/tick-svgrepo-com.svg'
 import StarIcon from '../../assets/icons/star-svgrepo-com.svg'
 const {width, height} = Dimensions.get('window')
 
-const RestaurantFlatlist = item => {
+const RestaurantFlatlist = (sortOption, kindOption) => {
   const navigation = useNavigation()
   const route = useRoute()
 
@@ -36,6 +36,30 @@ const RestaurantFlatlist = item => {
   const onHandleRestaurantItemPressed = (item, index) => {
     navigation.push('DishesList', item)
   }
+
+  useEffect(() => {
+    if (!sortOption) {
+      if (!kindOption || kindOption != 'Danh mục & cửa hàng') {
+        if (sortOption == 'Sắp xếp') {
+          setListItem(VoucherListItem.items[0])
+        } else if (sortOption == '') {
+        }
+        //...
+      }
+    }
+  }, [sortOption])
+
+  useEffect(() => {
+    if (!kindOption) {
+      if (!sortOption || sortOption != 'Sắp xếp') {
+        if (kindOption == 'Danh mục & cửa hàng') {
+          setListItem(VoucherListItem.items[0])
+        } else if (kindOption == '') {
+        }
+        //...
+      }
+    }
+  }, [kindOption])
 
   const renderItem = ({item, index}) => {
     return (

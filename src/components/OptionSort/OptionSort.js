@@ -19,11 +19,14 @@ import DownArrow from '../../assets/icons/arrow-down-2-svgrepo-com.svg'
 
 const {width, height} = Dimensions.get('window')
 
-const OptionSort = () => {
+const OptionSort = ({setSortOption, setKindOption}) => {
   const navigation = useNavigation()
   const route = useRoute()
   const [sortStatText, setSortStatText] = useState('Sắp xếp')
   const [title, setTitle] = useState('Sắp xếp')
+  const [sortKindText, setSortKindText] = useState('Danh mục & cửa hàng')
+  const [kindTitle, setKindTitle] = useState('Danh mục & cửa hàng')
+  const [optionPressed, setOptionPressed] = useState(Array(3).fill(false))
 
   const [filterItemName, setFilterItemName] = useState([
     'Khuyến mãi',
@@ -35,16 +38,50 @@ const OptionSort = () => {
     navigation.push('SortStat', {title, sortStatText, setSortStatText})
   }
 
+  const onHandleSortKindPressed = () => {
+    navigation.push('SortKind', {kindTitle, sortKindText, setSortKindText})
+  }
+
+  const onHandleOptionPressed = index => {
+    const tmp = !optionPressed[index]
+    setOptionPressed([
+      ...optionPressed.slice(0, index),
+      tmp,
+      ...optionPressed.slice(index + 1, optionPressed.length),
+    ])
+  }
+
   const renderItem = ({item, index}) => {
     return (
       <TouchableOpacity
-        style={styles.filterFlatlistItemStyle}
+        style={
+          optionPressed[index] == false
+            ? styles.filterFlatlistItemStyle
+            : [styles.filterFlatlistItemStyle, {backgroundColor: '#D5D5D5'}]
+        }
         activeOpacity={0.5}
+        onPress={() => onHandleOptionPressed(index)}
       >
-        <Text style={styles.textStyle}>{item}</Text>
+        <Text
+          style={
+            sortStatText == title
+              ? styles.textStyle
+              : [styles.textStyle, {color: 'black'}]
+          }
+        >
+          {item}
+        </Text>
       </TouchableOpacity>
     )
   }
+
+  useEffect(() => {
+    setSortOption(sortStatText)
+  }, [sortStatText])
+
+  useEffect(() => {
+    setKindOption(sortKindText)
+  }, [sortKindText])
 
   return (
     <ScrollView
@@ -75,8 +112,12 @@ const OptionSort = () => {
         <DownArrow width={10} height={10} />
       </TouchableOpacity>
       <Text style={[styles.filterTextStyle, styles.textStyle]}>Lọc :</Text>
-      <TouchableOpacity style={styles.filterItemStyle} activeOpacity={0.5}>
-        <Text style={styles.textStyle}> Danh mục {'&'} Cửa hàng </Text>
+      <TouchableOpacity
+        style={styles.filterItemStyle}
+        activeOpacity={0.5}
+        onPress={() => onHandleSortKindPressed()}
+      >
+        <Text style={styles.textStyle}> {sortKindText} </Text>
         <DownArrow width={10} height={10} />
       </TouchableOpacity>
       <FlatList

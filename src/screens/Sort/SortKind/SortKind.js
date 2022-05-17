@@ -22,6 +22,8 @@ const SortKind = () => {
   const navigation = useNavigation()
   const route = useRoute()
 
+  const [sortKindOptionTitle, setSortKindOptionTitle] = useState()
+
   return (
     <View style={styles.main}>
       <Text>abc</Text>

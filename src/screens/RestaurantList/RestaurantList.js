@@ -24,12 +24,15 @@ const RestaurantList = () => {
   const navigation = useNavigation()
   const route = useRoute()
 
+  const [sortOption, setSortOption] = useState('Sắp xếp')
+  const [kindOption, setKindOption] = useState('Danh mục & cửa hàng')
+
   return (
     <View style={styles.main}>
       <Toolbar />
-      <OptionSort />
+      <OptionSort setSortOption={setSortOption} setKindOption={setKindOption} />
       <ScrollView>
-        <RestaurantFlatlist />
+        <RestaurantFlatlist sortOption={sortOption} kindOption={kindOption} />
       </ScrollView>
     </View>
   )
